@@ -1,0 +1,197 @@
+import React, { useState } from 'react';
+import { View, TouchableOpacity, Text, StyleSheet,SafeAreaView, Image } from 'react-native';
+
+const App = () => {
+  const [present, setPresent] = useState('main');
+  const firstPage = {
+    image: '',
+    name: 'Mark Lester M. Gozon',
+    course: 'Bachelor Of Science In Information Technology'
+
+  }
+  const hobby = {
+    first: 'Watching KDrama',
+    sec: 'Playing Online Game'
+  }
+
+  const handlePress = () => {
+    setPresent((prev) => {
+      switch (prev) {
+        case 'main':
+          return 'Ed';
+        case 'Ed':
+          return 'Hobby';
+          case 'Hobby':
+          return 'Contacts';
+          case 'Contacts':
+          return 'Projects';
+        default:
+          return 'main';
+      }
+    });
+  };
+      let imagePath = { uri: 'http://tinyurl.com/3syz49zn' };
+      let online = { uri: 'https://rb.gy/dc99es' };
+       let movie = { uri: 'http://tinyurl.com/2xu8h6ax' };
+let portal = { uri: 'http://tinyurl.com/255x5ycy' };
+
+
+  return (
+    <SafeAreaView style={styles.whole}>
+    <TouchableOpacity onPress={handlePress}>
+      {present === 'main' && (
+        <View style={styles.container}>
+          <Image source={imagePath} style={{width: 300, height: 300, marginBottom: 10, marginLeft: 8, borderRadius: 700}} />
+          <Text style={styles.Text}>{firstPage.name}</Text>
+           <View style={styles.bckgName}>
+            <Text style={styles.course}>{firstPage.course}</Text>
+          </View>
+        </View>
+      )}
+      {present === 'Ed' && (
+        <View style={styles.onePage}>
+            <Text style={styles.bground}>My Educational Background</Text>
+            <View style={styles.around}>
+            <Text style={styles.elembckg}>Elementary</Text>
+                <Text style={styles.oneText}>Ninoy Aquino Elementary School</Text>
+                <Text style={styles.oneYear}>2008 – 2014</Text> 
+            </View>
+            <View style={styles.around}>
+            <Text style={styles.elembckg}>High School</Text>
+                <Text style={styles.oneText}>Longos National Highschool</Text>
+                <Text style={styles.oneYear}>2014– 2016</Text>
+                <Text style={styles.oneText}>Macario B. Asistio SR. High School</Text>
+                <Text style={styles.oneYear}>2017-2019</Text> 
+            </View>
+            <View style={styles.around}>
+            <Text style={styles.elembckg}>Senior High</Text>
+                <Text style={styles.oneText}>Arellano University</Text>
+                <Text style={styles.oneText}>2019 – 2021</Text> 
+            </View>
+            <View style={styles.around}>
+            <Text style={styles.elembckg}>College</Text>
+                <Text style={styles.oneText}>Global Reciprocal Colleges</Text>
+                <Text style={styles.oneYear}>2021</Text> 
+            </View>
+        </View>
+                
+      )}
+       {present === 'Hobby' && (
+         <View style={styles.onePage}>
+            <Text style={styles.bground}>My Hobby</Text>
+            <View style={styles.around}>
+            <Text style={styles.elembckg}>Online Game</Text>
+             <Image source={online} style={{width: 300, height: 200, borderRadius: 10, alignItems: 'center'}} />
+            </View>
+            <View style={styles.around}>
+            <Text style={styles.elembckg}>Watching Kdrama</Text>
+                <Image source={movie} style={{width: 300, height: 200, marginBottom: 10, borderRadius: 10, alignItems: 'center'}} />
+            </View>
+        </View>
+      )}
+       {present === 'Contacts' && (
+         <View style={styles.onePage}>
+            <Text style={styles.bground}>My Contacts</Text>
+            <View style={styles.around}>
+            <Text style={styles.elembckg}>My NO.</Text>
+                <Text style={styles.oneYear}>09757211887</Text> 
+            </View>
+            <View style={styles.around}>
+            <Text style={styles.elembckg}>My Address</Text>
+                <Text style={styles.oneYear}>BLK41D LOT 23 BRGY.LONGOS, MALABON CITY</Text> 
+            </View>
+
+        </View>
+      )}
+      {present === 'Projects' && (
+         <View style={styles.onePage}>
+            <Text style={styles.bground}>My Project</Text>
+            <View style={styles.around}>
+            <Text style={styles.elembckg}>Portfolio</Text>
+             <Image source={portal} style={{width: 250, height: 200, marginBottom: 10, borderRadius: 10, alignItems: 'center'}} />
+            </View>
+        </View>
+      )}
+    </TouchableOpacity>
+    </SafeAreaView>
+
+  );
+};
+
+const styles = StyleSheet.create({
+  elembckg:{
+    color: 'white',
+    fontSize: 20,
+    textAlign: 'center',
+    marginBottom: 10,
+    borderRadius: 20, 
+    justifyContent: 'center',
+    marginTop: 30
+  },
+ container:{
+     justifyContent: 'center',
+     alignItems: 'center',
+     textAlign: 'center',
+     marginTop: 100,
+      backgroundColor: 'black',
+     
+ },
+ onePage:{
+    backgroundColor: 'black',
+    padding: 50,
+    height: 1000
+
+ },
+ around:{
+   alignSelf: 'around',
+   marginTop: 20,
+   fontSize: 30
+   
+ },
+ oneYear:{
+   fontSize: 20,
+   marginTop: 2,
+   color: 'yellow'
+ },
+ bground:{
+    
+    fontSize: 30,
+    color: 'yellow',
+    textAlign: 'center',
+    borderRadius: 50,
+    fontWeight: 'bold'
+    
+ },
+ oneText:{
+    color: 'yellow',
+    fontWeight: 40,
+    fontSize: 20
+  },
+ bckgName: {
+   padding: 10,
+  borderRadius: 10,
+  marginTop: 15,
+
+  },
+  Text:{
+    fontSize: 30,
+    fontWeight: 'bold',
+    fontFamily: 'serif', 
+    textAlign: 'center',
+    color:'yellow',
+    
+  },
+  course:{
+    fontSize: 16,
+    marginTop: 5,
+    fontSize: 20,
+    textAlign: 'center',
+    color: 'yellow',
+  },
+  educ:{
+    fontSize: 30
+  }
+
+});
+
+export default App;
